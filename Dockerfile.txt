@@ -1,17 +1,8 @@
 FROM php:8.2-apache
-
-RUN apt-get update && apt-get install -y \
-    libcurl4-openssl-dev \
-    libonig-dev \
-    unzip \
-    && docker-php-ext-install curl mbstring \
-    && a2enmod rewrite \
-    && rm -rf /var/lib/apt/lists/*
-
+RUN apt-get update && apt-get install -y libcurl4-openssl-dev libonig-dev unzip && docker-php-ext-install curl mbstring && a2enmod rewrite && rm -rf /var/lib/apt/lists/*
 WORKDIR /var/www/html
 COPY . /var/www/html/
-
 RUN mkdir -p /var/www/html/data && chmod -R 777 /var/www/html/data
-
 EXPOSE 80
 CMD ["apache2-foreground"]
+
