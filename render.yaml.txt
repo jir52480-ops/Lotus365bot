@@ -1,0 +1,5 @@
+services:
+  - type: web
+    name: fairplay-bot
+    runtime: docker
+    plan: free
